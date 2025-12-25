@@ -35,7 +35,23 @@ def main():
             app.add_service()
         elif choice == "4":
             app.show_history()
-       
+        elif choice == "5":
+            rows = service_repo.all_services()
+            if len(rows) == 0:
+                print("No service records to export.")
+            else:
+                path = os.path.join(settings.REPORTS_FOLDER, "all_services.csv")
+                export_to_csv(rows, path)
+                print("Saved:", path)
+
+        elif choice == "6":
+            rows = service_repo.all_services()
+            if len(rows) == 0:
+              print("No service records to export.")
+            else:
+                path = os.path.join(settings.REPORTS_FOLDER, "all_services.xlsx")
+                export_to_excel(rows, path)
+                print("Saved:", path)
 
 
         
