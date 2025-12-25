@@ -60,5 +60,11 @@ class ServiceRepository:
         """, (car_id,))
         return self.db.cur.fetchall()
 
+    def delete_record(self, rec_id):
+        self.db.cur.execute(
+            "DELETE FROM service_records WHERE id = ?",
+            (rec_id,)
+        )
+        self.db.conn.commit()
+        return self.db.cur.rowcount
 
-   
