@@ -51,4 +51,14 @@ class ServiceRepository:
         """)
         return self.db.cur.fetchall()
     
+    def history_for_car(self, car_id):
+        self.db.cur.execute("""
+            SELECT id, date, mileage, service_type, cost, COALESCE(notes,'')
+            FROM service_records
+            WHERE car_id = ?
+            ORDER BY date DESC, mileage DESC
+        """, (car_id,))
+        return self.db.cur.fetchall()
+
+
    
