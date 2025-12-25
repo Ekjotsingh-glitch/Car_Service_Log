@@ -80,4 +80,14 @@ class CarServiceApp:
             if notes != "":
                 print("   Notes:", notes)
 
-   
+    def delete_service(self):
+        rec_id_text = input("Record id to delete: ").strip()
+        if not rec_id_text.isdigit():
+            print("Id must be a number.")
+            return
+
+        deleted = self.service_repo.delete_record(int(rec_id_text))
+        if deleted == 0:
+            print("No record deleted (id not found).")
+        else:
+            print("Record deleted.")
