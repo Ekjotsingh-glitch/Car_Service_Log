@@ -16,12 +16,33 @@ def main():
 
     while True:
         print("\n=== Car Service Log ===")
+        print("1) Add car")
+        print("2) List cars")
+        print("3) Add service record")
+        print("4) Show service history for a car")
+        print("5) Export ALL services to CSV")
+        print("6) Export ALL services to Excel")
+        print("7) Delete a service record")
         print("0) Exit")
 
         choice = input("Choose: ").strip()
 
+        if choice == "1":
+            app.add_car()
+        elif choice == "2":
+            app.list_cars()
+        elif choice == "3":
+            app.add_service()
+        elif choice == "4":
+            app.show_history()
+       
+
+
         
-        if choice == "0":
+
+        elif choice == "7":
+            app.delete_service()
+        elif choice == "0":
             break
         else:
             print("Unknown choice.")
