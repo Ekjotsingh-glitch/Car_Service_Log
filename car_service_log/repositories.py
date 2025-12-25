@@ -20,4 +20,14 @@ class CarRepository:
         )
         return self.db.cur.fetchall()
 
- 
+    def get_car_id_by_plate(self, plate):
+        self.db.cur.execute(
+            "SELECT id FROM cars WHERE plate = ?",
+            (plate,)
+        )
+        row = self.db.cur.fetchone()
+        if row is None:
+            return None
+        return row[0]
+
+
