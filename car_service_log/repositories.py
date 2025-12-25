@@ -9,4 +9,15 @@ class CarRepository:
         )
         self.db.conn.commit()
     
-   
+    def plate_exists(self, plate):
+      self.db.cur.execute("SELECT id FROM cars WHERE plate = ?", (plate,))
+      row = self.db.cur.fetchone()
+      return row is not None
+
+    def list_cars(self):
+        self.db.cur.execute(
+            "SELECT id, plate, brand, model, year FROM cars ORDER BY brand, model"
+        )
+        return self.db.cur.fetchall()
+
+ 
