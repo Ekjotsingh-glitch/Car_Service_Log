@@ -33,4 +33,51 @@ class CarServiceApp:
         for car_id, plate, brand, model, year in cars:
             print(f"- {plate}: {brand} {model} ({year})")
 
+    def add_service(self):
+        plate = input("Plate of the car: ").strip()
+        car_id = self.car_repo.get_car_id_by_plate(plate)
+
+        if car_id is None:
+            print("Car not found. Add the car first.")
+            return
+
+        date = input("Date (YYYY-MM-DD): ").strip()
+        mileage_text = input("Mileage: ").strip()
+        service_type = input("Service type (oil change, brakes...): ").strip()
+        cost_text = input("Cost: ").strip()
+        notes = input("Notes (optional): ").strip()
+
+        if not mileage_text.isdigit():
+            print("Mileage must be a number.")
+            return
+
+        try:
+            mileage = int(mileage_text)
+            cost = float(cost_text)
+        except ValueError:
+            print("Cost must be a number (example: 79.99).")
+            return
+
+        self.service_repo.add_service(car_id, date, mileage, service_type, cost, notes)
+        print("Service record added!")
+
+    def show_history(self):
+        plate = input("Plate: ").strip()
+        car_id = self.car_repo.get_car_id_by_plate(plate)
+
+        if car_id is None:
+            print("Car not found.")
+            return
+
+        records = self.service_repo.history_for_car(car_id)
+        if len(records) == 0:
+            print("No service records for this car.")
+            return
+
+        print(f"Service history for {plate}:")
+        for rec_id, date, mileage, service_type, cost, notes in records:
+            print(f"[{rec_id}] {date} - {mileage} km - {service_type} - €{cost:.2f}")
+            if notes != "":
+                print("   Notes:", notes)
+
    
