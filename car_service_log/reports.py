@@ -17,4 +17,17 @@ def export_to_csv(rows, path):
             writer.writerow(row)
 
 
+def export_to_excel(rows, path):
+    folder = os.path.dirname(path)
+    if folder != "":
+        os.makedirs(folder, exist_ok=True)
 
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Service Report"
+
+    ws.append(HEADERS)
+    for row in rows:
+        ws.append(list(row))
+
+    wb.save(path)
