@@ -7,3 +7,5 @@ __pycache__/
 reports/
 .DS_Store
 Thumbs.db
+!data/
+!data/*.db
