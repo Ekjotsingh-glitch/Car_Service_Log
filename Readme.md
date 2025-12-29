@@ -140,19 +140,19 @@ The database consists of two tables.
 
 ```sql
 
-CREATE TABLE cars (
+CREATE TABLE IF NOT EXISTS cars (
 
-&nbsp;           id INTEGER PRIMARY KEY AUTOINCREMENT,
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-&nbsp;           plate TEXT UNIQUE NOT NULL,
+ plate TEXT UNIQUE NOT NULL,
 
-&nbsp;           brand TEXT NOT NULL,
+ brand TEXT NOT NULL,
 
-&nbsp;           model TEXT NOT NULL,
+ model TEXT NOT NULL,
 
-&nbsp;           year INTEGER NOT NULL
+ year INTEGER NOT NULL
 
-&nbsp;      )
+ )
 
 
 
@@ -164,25 +164,25 @@ CREATE TABLE cars (
 
 ```sql
 
-CREATE TABLE service_records (
+CREATE TABLE IF NOT EXISTS service_records (
 
-&nbsp;           id INTEGER PRIMARY KEY AUTOINCREMENT,
+   id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-&nbsp;           car_id INTEGER NOT NULL,
+   car_id INTEGER NOT NULL,
 
-&nbsp;           date TEXT NOT NULL,
+   date TEXT NOT NULL,
 
-&nbsp;           mileage INTEGER NOT NULL,
+   mileage INTEGER NOT NULL,
 
-&nbsp;           service_type TEXT NOT NULL,
+   service_type TEXT NOT NULL,
 
-&nbsp;           cost REAL NOT NULL,
+   cost REAL NOT NULL,
 
-&nbsp;           notes TEXT,
+   notes TEXT,
 
-&nbsp;           FOREIGN KEY (car_id) REFERENCES cars(id) ON DELETE CASCADE
+   FOREIGN KEY (car_id) REFERENCES cars(id) ON DELETE CASCADE
 
-&nbsp;       )
+   )
 
 ```
 
