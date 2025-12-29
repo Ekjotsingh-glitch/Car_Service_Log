@@ -72,7 +72,7 @@ pip install -r requirements.txt
 ### Database name / settings file
 Create a file `settings.py` in the main folder.
 
-Copy `example\_settings.py` and rename it to `settings.py`.
+Copy `example_settings.py` and rename it to `settings.py`.
 
 
 
@@ -80,9 +80,9 @@ Content example:
 
 ```python
 
-DB\_PATH = "data/car\_service.db"
+DB_PATH = "data/car_service.db"
 
-REPORTS\_FOLDER = "reports" 
+REPORTS_FOLDER = "reports" 
 
 ```
 
@@ -112,9 +112,9 @@ ModuleNotFoundError: No module named 'settings'
 
 ```
 
-Run the program from the \*\*project root\*\* folder (the folder that contains:
+Run the program from the project root folder (the folder that contains:
 
-`car\_service\_log/`, `data/`, `example\_settings.py`).
+`car_service_log/`, `data/`, `example_settings.py`).
 
 
 
@@ -122,7 +122,7 @@ Running the program from Terminal should be no problem:
 
 ```bash
 
-python -m car\_service\_log.main
+python -m car_service_log.main
 
 ```
 
@@ -130,17 +130,17 @@ python -m car\_service\_log.main
 
 
 
-\## Structure of the database
+## Structure of the database
 
 The database consists of two tables. 
 
 
 
-\### Table 1: cars 
+### Table 1: cars 
 
 ```sql
 
-CREATE TABLE IF NOT EXISTS cars (
+CREATE TABLE cars (
 
 &nbsp;           id INTEGER PRIMARY KEY AUTOINCREMENT,
 
@@ -160,27 +160,27 @@ CREATE TABLE IF NOT EXISTS cars (
 
 
 
-\### Table 2: Service\_records
+### Table 2: Service_records
 
 ```sql
 
-CREATE TABLE IF NOT EXISTS service\_records (
+CREATE TABLE service_records (
 
 &nbsp;           id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-&nbsp;           car\_id INTEGER NOT NULL,
+&nbsp;           car_id INTEGER NOT NULL,
 
 &nbsp;           date TEXT NOT NULL,
 
 &nbsp;           mileage INTEGER NOT NULL,
 
-&nbsp;           service\_type TEXT NOT NULL,
+&nbsp;           service_type TEXT NOT NULL,
 
 &nbsp;           cost REAL NOT NULL,
 
 &nbsp;           notes TEXT,
 
-&nbsp;           FOREIGN KEY (car\_id) REFERENCES cars(id) ON DELETE CASCADE
+&nbsp;           FOREIGN KEY (car_id) REFERENCES cars(id) ON DELETE CASCADE
 
 &nbsp;       )
 
