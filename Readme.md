@@ -1,62 +1,76 @@
-\# Car Service Log
+# Car Service Log
 
 
 
-\## Purpose
+## Purpose
 
 A small CLI application to manage cars and their service records.
 
 
 
-\## Technology
+## Technology
 
-\- Python (3.x)
+- Python (3.x)
 
-\- SQLite (via Python `sqlite3`)
+- SQLite (via Python `sqlite3`)
 
 
 
-\## Libraries
+## Libraries
 
 (see `requirements.txt`)
 
-\- `openpyxl`: export reports to Excel (`.xlsx`)
+- `openpyxl`: export reports to Excel (`.xlsx`)
 
 
 
-\## Functions
+## Functions
 
-\- Add a car
+- Add a car
 
-\- List cars
+- List cars
 
-\- Add a service record for a car
+- Add a service record for a car
 
-\- Show service history for a car
+- Show service history for a car
 
-\- Delete a service record
+- Delete a service record
 
-\- Export all service records to CSV
+- Export all service records to CSV
 
-\- Export all service records to Excel
-
-
-
-\## Planned functions
-
-\- Edit a car
-
-\- Edit a service record
-
-\- Search / filter service records
+- Export all service records to Excel
 
 
 
-\## Database name / settings file
+## Planned functions
 
+- Edit a car
+
+- Edit a service record
+
+- Search / filter service records
+
+
+## How to execute
+Staying in the correct directory is important for the execution : 
+```bash
+cd (foldername)
+```
+1. Create a virtual environment:
+```bash
+python -m venv .venv
+```
+
+2. Activate Virtual Environment :
+```bash
+.\.venv\Scripts\activate
+```
+3. Install:
+```bash
+pip install -r requirements.txt
+```
+### Database name / settings file
 Create a file `settings.py` in the main folder.
-
-
 
 Copy `example\_settings.py` and rename it to `settings.py`.
 
@@ -74,19 +88,17 @@ REPORTS\_FOLDER = "reports"
 
 
 
-\## External libraries
+## External libraries
 
 (see `requirements.txt`)
 
+- `openpyxl` is used to export `.xlsx` (Excel).
 
-
-\- `openpyxl` is used to export `.xlsx` (Excel).
-
-\- `sqlite3`, `csv`, and `os` are part of Python (no install needed).
+- `sqlite3`, `csv`, and `os` are part of Python (no install needed).
 
 
 
-\## Project root note (Spyder)
+## Project root note (Spyder)
 
 
 
